@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Naija IQ Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Naija IQ Quiz</h2>
+    <div id="quiz-container"></div>
+    <button id="submit">Submit Answers</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "What is Nigeria's capital city?",
+        options: ["Lagos", "Abuja", "Port Harcourt"],
+        answer: "Abuja"
+      },
+      {
+        question: "Which year did Nigeria gain independence?",
+        options: ["1960", "1970", "1957"],
+        answer: "1960"
+      },
+      {
+        question: "What is Nigeria's official currency?",
+        options: ["Dollar", "Naira", "Cedi"],
+        answer: "Naira"
+      }
+    ];
+
+    const quizContainer = document.getElementById("quiz-container");
+    const submitButton = document.getElementById("submit");
+    const result = document.getElementById("result");
+
+    function loadQuiz() {
+      quizData.forEach((q, index) => {
+        const div = document.createElement("div");
+        div.innerHTML = `<p>${q.question}</p>` + q.options.map(opt =>
+          `<label><input type="radio" name="q${index}" value="${opt}"> ${opt}</label><br>`
+        ).join("");
+        quizContainer.appendChild(div);
+      });
+    }
+
+    function checkAnswers() {
+      let score = 0;
+      quizData.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === q.answer) score++;
+      });
+      result.textContent = `You scored ${score} out of ${quizData.length}!`;
+    }
+
+    loadQuiz();
+    submitButton.addEventListener("click", checkAnswers);
+  </script>
+</body>
+</html>
