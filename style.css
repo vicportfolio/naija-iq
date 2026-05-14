@@ -1,0 +1,51 @@
+body {
+  margin: 0;
+  height: 100vh;
+  background-color: #2e2e2e; /* dark grey */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  text-align: center;
+  position: relative;
+}
+
+.title {
+  font-size: 60px;
+  color: silver;
+  text-shadow: 0 0 10px #fff, 0 0 20px silver, 0 0 30px #ccc;
+  animation: sparkle 2s infinite alternate;
+}
+
+@keyframes sparkle {
+  from { text-shadow: 0 0 10px #fff, 0 0 20px silver; }
+  to { text-shadow: 0 0 20px #fff, 0 0 40px silver, 0 0 60px #ccc; }
+}
+
+.play-btn {
+  margin-top: 50px;
+  padding: 15px 40px;
+  font-size: 24px;
+  border: none;
+  border-radius: 30px;
+  background: silver;
+  color: #2e2e2e;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.play-btn:hover {
+  background: #dcdcdc;
+}
+
+.settings {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 30px;
+  color: silver;
+  cursor: pointer;
+}
